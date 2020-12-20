@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+<script src="time.js"></script>
+</head>
+<link rel="stylesheet" href="time.css">
+<link rel="stylesheet" href="pic.css">
+<style>
+        .title{
+            
+            width: 200px;
+        }
+        .con{
+            width: 1200px;
+            border: 1px solid pink;
+            margin:0 auto;
+            overflow:hidden;
+            height: 20px;
+        }
+</style>
+
+<body>
+    <div class="con">
+        <div class="title">
+            欢迎来到雷姆工坊！！！
+        </div>
+    </div>
+	<div id="div">
+		<img class= "tp"src="img/0.jpg" width="120" height="80"/>
+        <img class= "tp"src="img/8.jpg" width="120" height="80"/>
+        &nbsp;&nbsp;
+        时
+        &nbsp;&nbsp;
+		<img class= "tp"src="img/1.jpg" width="120" height="80"/>
+        <img class= "tp"src="img/5.jpg" width="120" height="80"/>
+        &nbsp;&nbsp;
+        分
+        &nbsp;&nbsp;
+		<img class= "tp"src="img/0.jpg" width="120" height="80"/>
+        <img class= "tp"src="img/9.jpg" width="120" height="80"/>
+        &nbsp;&nbsp;
+		秒
+    </div>
+    <div id="main">
+        <div>
+            <img class="cp" src="images/1.jpg" id="bigpic" width="720" height="700"/>
+        </div>
+        <div id="smallpic">
+            <img class="cp" src="images/1.jpg"  width="140" height="100" />
+            <img class="cp" src="images/2.jpg"  width="140" height="100"/>    
+            <img class="cp" src="images/3.jpg"  width="140" height="100"/>
+            <img class="cp" src="images/4.jpg"  width="140" height="100"/>
+            <img class="cp" src="images/5.jpg"  width="140" height="100"/>
+        </div>
+      </div>
+    
+</body>
+<script >
+        var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f'];
+        var title = document.getElementsByClassName("title");
+        title[0].style.marginLeft = "0";
+        var intervalId = setInterval(function(){
+            var marginLeft = parseInt(title[0].style.marginLeft);
+            title[0].style.marginLeft = (marginLeft + 1 + "px");
+            if(marginLeft == 1200){
+                title[0].style.marginLeft = "0";
+            }
+        },10)
+        var changeColor = setInterval(function(){
+                var colorStr = "#";
+                for(var i =0;i < 6; i++) {
+                    var index = Math.random();
+                    index = parseInt(index*arr.length);
+                    var c = arr[index];
+                    colorStr = colorStr + c;
+                }
+                title[0].style.color = colorStr;
+            },200)
+
+        var bigpic = document.getElementById("bigpic");
+        var smallpic = document.getElementById("smallpic");
+        var img = document.getElementsByClassName("cp");
+        var index = 1;
+        var ip = 0;
+        var p = 0;
+        
+        var timechange = setInterval(function(){
+            bigpic.src = "images/" + index + ".jpg";
+            ip = bigpic.src.lastIndexOf(".");
+            index = (parseInt(bigpic.src.charAt(ip -1))) % 5 + 1;
+            for(var t = 1; t < 6;t++  ){
+                img[t].onclick = function(){
+                    bigpic.src = this.src;
+                    p = this.src.lastIndexOf(".");
+                    index = (parseInt(bigpic.src.charAt(ip -1))) % 5 + 1;
+                }
+            }     
+        },1000)
+</script>
+</html>

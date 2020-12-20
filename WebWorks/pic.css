@@ -1,0 +1,17 @@
+#main{
+    width:1000px;
+    margin:auto;
+    margin-left: 350px;
+    }
+    #smallpic{
+    height:120px; 
+    }
+    #smallpic.img{
+    float:left; 
+    margin-right:10px; 
+    margin-bottom:10px;
+    }
+    #smallpic img:hover{
+      cursor:pointer;
+    }
+    
